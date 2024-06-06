@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Models;
+using Product_Management.Service;
 using Product_Management.UnitOfWorks;
 
 namespace Product_Management
@@ -19,6 +20,10 @@ namespace Product_Management
             });
 
             builder.Services.AddScoped<UnitOfWork>();
+
+            builder.Services.AddScoped<ProductService>();
+
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
 
             var app = builder.Build();
 

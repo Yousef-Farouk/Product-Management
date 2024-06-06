@@ -13,9 +13,9 @@ namespace Product_Management.Repository
             db = _db;
             
         }
-        public async Task<IEnumerable<T>> GetAll()
+        public List<T> GetAll()
         {
-            return await db.Set<T>().ToListAsync();
+            return db.Set<T>().ToList();
         }
 
         public T GetByID(int id)

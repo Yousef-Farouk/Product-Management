@@ -4,7 +4,7 @@ namespace Product_Management.Repository
 {
     public interface IRepository<T> where T : class
     {
-        public Task<IEnumerable<T>> GetAll();
+        public List<T> GetAll();
 
         public T GetByID(int id);
 

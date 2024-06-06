@@ -39,7 +39,7 @@ namespace Product_Management.UnitOfWorks
                 return clientRepository;
             }
         }
-        public void savechanges()
+        public void SaveChanges()
         {
             db.SaveChanges();
         }
