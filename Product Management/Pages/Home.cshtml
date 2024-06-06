@@ -1,0 +1,27 @@
+﻿@page
+@model Product_Management.Pages.HomeModel
+@{
+}
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@(product.IsActive ? "Yes" : "No")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
