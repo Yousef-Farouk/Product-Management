@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Product_Management.ViewModels;
 
 namespace Product_Management.Models
 {

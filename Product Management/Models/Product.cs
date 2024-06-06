@@ -8,8 +8,11 @@ namespace Product_Management.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        //[Required]
+        //[StringLength(50)]
+
+        [Required(ErrorMessage = "Product name is required.")]
+        [StringLength(40, ErrorMessage = "Product name cannot exceed 50 characters.")]
         public string Name { get; set; }
 
         [Required]

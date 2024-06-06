@@ -1,24 +1,32 @@
 ﻿@page
-@model Product_Management.Pages.HomeModel
+@model Index
 @{
 }
 
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">ID</th>
+            @* <th scope="col">ID</th> *@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Active</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var product in Model.Products)
         {
             <tr>
+                @* <td>@product.Id</td> *@
                 <td>@product.Name</td>
                 <td>@product.Description</td>
                 <td>@(product.IsActive ? "Yes" : "No")</td>
+                <td>
+                    <div>
+                        <button class="btn btn-success">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
