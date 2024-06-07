@@ -39,5 +39,6 @@ namespace Product_Management.Models
                 .HasConversion<string>();
 
         }
+        public DbSet<Product_Management.ViewModels.ProductVm> ProductVm { get; set; } = default!;
     }
 }
