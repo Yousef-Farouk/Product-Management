@@ -21,11 +21,31 @@ namespace Product_Management.Service
             return mapper.Map<IList<ProductVm>>(products);
         }
 
+        public ProductVm GetProductById(int id)
+        {
+            var product = unit.ProductRepository.GetByID(id);
+
+            return mapper.Map<ProductVm>(product);
+        
+        }
         public void AddProduct(ProductVm productVm)
         {
             var product = mapper.Map<Product>(productVm);
             unit.ProductRepository.Add(product);
             unit.SaveChanges();
         }
+
+
+        public void UpdateProduct(ProductVm productvm) 
+        {
+           // var product = unit.ProductRepository.GetByID(productvm.Id);
+
+            var product  = mapper.Map<Product>(productvm);
+            unit.ProductRepository.Update(product);
+            unit.SaveChanges();
+        }
+
+
+        //public void DeleteProduct(int id) { }
     }
 }

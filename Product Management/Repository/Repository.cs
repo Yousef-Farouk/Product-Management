@@ -37,6 +37,12 @@ namespace Product_Management.Repository
         public void Delete(int id)
         {
             T obj = db.Set<T>().Find(id);
+
+            db.Set<T>().Remove(obj);
+        }
+
+        public void Delete(T obj)
+        {
             db.Set<T>().Remove(obj);
         }
 

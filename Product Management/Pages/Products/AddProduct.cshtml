@@ -7,16 +7,16 @@
 
 <h1>AddProduct</h1>
 
-<h4>ProductVm</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProductVm.Name"  class="control-label"></label>
-                <input asp-for="ProductVm.Name" data-val = "true" class="form-control" />
-                <span asp-validation-for="ProductVm.Name" class="text-danger"></span>
+                <input asp-for="ProductVm.Name" data-val ="true"   data-val-minlength-min="2" data-val-minlength="The field UserName must be a string" class="form-control" />
+                @* <span asp-validation-for="ProductVm.Name"  class="text-danger"></span> *@
+                @* @Html.ValidationMessageFor(m => m.ProductVm.Name, "long name", new { @class = "text-danger" }) *@
+
             </div>
             <div class="form-group">
                 <label asp-for="ProductVm.Description" class="control-label"></label>
@@ -40,5 +40,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @* @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} *@
+    <partial name="_ValidationScriptsPartial" />
+
 }

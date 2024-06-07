@@ -12,7 +12,7 @@ namespace Product_Management.Models
         //[StringLength(50)]
 
         [Required(ErrorMessage = "Product name is required.")]
-        [StringLength(40, ErrorMessage = "Product name cannot exceed 50 characters.")]
+        [StringLength(2, ErrorMessage = "Product name cannot exceed 50 characters.")]
         public string Name { get; set; }
 
         [Required]

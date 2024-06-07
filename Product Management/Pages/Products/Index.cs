@@ -13,6 +13,7 @@ namespace Product_Management.Pages.Products
 
         public IList<ProductVm> Products { get; set; }
 
+        public  ProductVm ProductVm { get; set; }
 
         public Index(ProductService _productservice)
         {
@@ -22,5 +23,16 @@ namespace Product_Management.Pages.Products
         {
             Products = productservice.GetAllProducts();
         }
+
+        //public IActionResult OnGetProductById(int id)
+        //{
+        //    ProductVm = productservice.GetProductById(id);
+
+        //    if (ProductVm == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Page();
+        //}
     }
 }

@@ -5,50 +5,50 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Product_Management.Models;
 using Product_Management.Service;
 using Product_Management.ViewModels;
 
 namespace Product_Management.Pages.Products
 {
-    public class AddProductModel : PageModel
+    public class EditProductModel : PageModel
     {
         ProductService productservice;
+        public EditProductModel(ProductService _productservice)
+        {
+            productservice = _productservice;
 
+        }
 
         [BindProperty]
         public ProductVm ProductVm { get; set; } = default!;
-        public AddProductModel(ProductService _productservice)
-        {
-           productservice = _productservice;
-        }
 
-        public IActionResult OnGet()
+        public IActionResult OnGetProductById(int id)
         {
+            ProductVm = productservice.GetProductById(id);
+
+            if (ProductVm == null)
+            {
+                return NotFound();
+            }
             return Page();
         }
 
-        
 
-
-       
-
-        public  IActionResult OnPostAsync()
+        [HttpPost]
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            productservice.AddProduct(ProductVm);
+            productservice.UpdateProduct(ProductVm);
+
             return RedirectToPage("./Index");
         }
 
        
-
-
-
-
-
     }
 }

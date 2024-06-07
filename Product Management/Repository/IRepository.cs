@@ -14,6 +14,9 @@ namespace Product_Management.Repository
 
         public void Delete(int id);
 
+        public void Delete(T obj);
+
+
         public void Save();
     }
 }

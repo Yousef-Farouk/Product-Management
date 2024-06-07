@@ -23,7 +23,7 @@
                 <td>@(product.IsActive ? "Yes" : "No")</td>
                 <td>
                     <div>
-                        <button class="btn btn-success">Edit</button>
+                        <a class="btn btn-success" asp-page="/Products/EditProduct" asp-page-handler="ProductById" asp-route-id = "@product.Id">Edit</a>
                         <button class="btn btn-danger">Delete</button>
                     </div>
                 </td>
