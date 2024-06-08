@@ -2,6 +2,7 @@
 using Product_Management.Models;
 using Product_Management.UnitOfWorks;
 using Product_Management.ViewModels;
+using X.PagedList;
 
 namespace Product_Management.Service
 {
@@ -17,7 +18,7 @@ namespace Product_Management.Service
 
         public IList<ProductVm> GetAllProducts()
         {
-            var products = unit.ProductRepository.GetAll();
+            var products = unit.ProductRepository.GetAll().OrderBy(p=>p.Name);
             return mapper.Map<IList<ProductVm>>(products);
         }
 
@@ -38,14 +39,24 @@ namespace Product_Management.Service
 
         public void UpdateProduct(ProductVm productvm) 
         {
-           // var product = unit.ProductRepository.GetByID(productvm.Id);
-
             var product  = mapper.Map<Product>(productvm);
             unit.ProductRepository.Update(product);
             unit.SaveChanges();
         }
 
 
-        //public void DeleteProduct(int id) { }
+        public void DeleteProduct(int id) 
+        {
+            var product = unit.ProductRepository.GetByID(id);   
+            unit.ProductRepository.Delete(product);
+            unit.SaveChanges();
+        }
+
+        public  IPagedList<ProductVm> GetPagedProductsAsync(int pageNumber, int pageSize)
+        {
+            var products = unit.ProductRepository.GetAll().ToPagedList(pageNumber, pageSize);
+            return mapper.Map<IPagedList<ProductVm>>(products);
+        }
+
     }
 }

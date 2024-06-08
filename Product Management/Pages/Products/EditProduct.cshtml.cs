@@ -36,7 +36,6 @@ namespace Product_Management.Pages.Products
         }
 
 
-        [HttpPost]
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
@@ -49,6 +48,8 @@ namespace Product_Management.Pages.Products
             return RedirectToPage("./Index");
         }
 
+
        
+
     }
 }

@@ -3,10 +3,13 @@
 @{
 }
 
+
+<a class="btn btn-secondary me-2" asp-page="/Products/AddProduct">Add Product</a>
+
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            @* <th scope="col">ID</th> *@
+            <th scope="col">ID</th> 
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Active</th>
@@ -17,14 +20,16 @@
         @foreach (var product in Model.Products)
         {
             <tr>
-                @* <td>@product.Id</td> *@
+                <td>@product.Id</td>
                 <td>@product.Name</td>
                 <td>@product.Description</td>
                 <td>@(product.IsActive ? "Yes" : "No")</td>
                 <td>
-                    <div>
-                        <a class="btn btn-success" asp-page="/Products/EditProduct" asp-page-handler="ProductById" asp-route-id = "@product.Id">Edit</a>
-                        <button class="btn btn-danger">Delete</button>
+                    <div class="d-flex align-items-center">
+                        <a class="btn btn-success mb-2 me-2" asp-page="/Products/EditProduct" asp-page-handler="ProductById" asp-route-id = "@product.Id">Edit</a>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@product.Id">
+                            <input type="submit" value="Delete" class="btn btn-danger mb-2 ms-2" />
+                        </form>
                     </div>
                 </td>
             </tr>
@@ -32,4 +37,17 @@
     </tbody>
 </table>
 
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>
+
+<div>
+    @* @Html.PagedListPager(Model.Products, page => Url.Page("/Products/Index", new { page })) *@
+</div>
 

@@ -6,7 +6,7 @@ namespace Product_Management.ViewModels
     {
         public int Id { get; set; }
 
-       // [Required(ErrorMessage = "Product name is required.")]
+         // [Required(ErrorMessage = "Product name is required.")]
         //[StringLength(2, ErrorMessage = "Product name cannot exceed 50 characters.")]
         public string Name { get; set; }
 

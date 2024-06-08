@@ -5,39 +5,55 @@
     ViewData["Title"] = "AddProduct";
 }
 
-<h1>AddProduct</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProductVm.Name"  class="control-label"></label>
-                <input asp-for="ProductVm.Name" data-val ="true"   data-val-minlength-min="2" data-val-minlength="The field UserName must be a string" class="form-control" />
-                @* <span asp-validation-for="ProductVm.Name"  class="text-danger"></span> *@
-                @* @Html.ValidationMessageFor(m => m.ProductVm.Name, "long name", new { @class = "text-danger" }) *@
-
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductVm.Description" class="control-label"></label>
-                <input asp-for="ProductVm.Description" class="form-control" />
-                <span asp-validation-for="ProductVm.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
+<h1 class="mt-4 mb-3">Add Product</h1>
+<div class="contaier">
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                @* <div asp-validation-summary="All" class="text-danger"></div> *@
+                <div class="form-group mt-2 me-2">
+                    <label asp-for="ProductVm.Name" class="control-label"></label>
+                    <input asp-for="ProductVm.Name" data-val="true" data-val-maxlength-max="2" data-val-maxlength="The field Name must not exceed 2 chars" class="form-control" />
+                    <span asp-validation-for="ProductVm.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2 me-2">
+                    <label asp-for="ProductVm.Description" class="control-label"></label>
+                    <input asp-for="ProductVm.Description" class="form-control" />
+                    <span asp-validation-for="ProductVm.Description" class="text-danger"></span>
+                </div>
+                @*  <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="ProductVm.IsActive" /> @Html.DisplayNameFor(model => model.ProductVm.IsActive)
+                <input class="form-check-input" asp-for="ProductVm.IsActive" /> @Html.DisplayNameFor(model => model.ProductVm.IsActive)
                 </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                </div> *@
+
+                <div class="form-group d-flex mt-3">
+                    <label class="control-label me-3">Is Active</label>
+                    <div class="form-check ms-2 me-2">
+                        <input class="form-check-input" type="radio" asp-for="ProductVm.IsActive" value="true" />
+                        <label class="form-check-label">Yes</label>
+                    </div>
+                    <div class="form-check ms-2 me-2">
+                        <input class="form-check-input" type="radio" asp-for="ProductVm.IsActive" value="false" />
+                        <label class="form-check-label">No</label>
+                    </div>
+                    <span asp-validation-for="ProductVm.IsActive" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3 mb-3">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="Index">Back to List</a>
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
+
+
 
 @section Scripts {
     @* @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} *@
