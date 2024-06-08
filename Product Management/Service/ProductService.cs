@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Product_Management.Models;
 using Product_Management.UnitOfWorks;
 using Product_Management.ViewModels;
@@ -52,10 +53,21 @@ namespace Product_Management.Service
             unit.SaveChanges();
         }
 
-        public  IPagedList<ProductVm> GetPagedProductsAsync(int pageNumber, int pageSize)
+        public async Task<(IEnumerable<ProductVm> Products, int TotalCount)> GetPagedProductsAsync(int pageNumber, int pageSize)
         {
-            var products = unit.ProductRepository.GetAll().ToPagedList(pageNumber, pageSize);
-            return mapper.Map<IPagedList<ProductVm>>(products);
+            var query = unit.ProductRepository.GetAll();
+
+            int totalCount = await query.CountAsync();
+
+            var products = await query
+                .OrderBy(p => p.Name)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var productVm = mapper.Map<List<ProductVm>>(products);
+
+            return (productVm, totalCount);
         }
 
     }
