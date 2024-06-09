@@ -45,7 +45,7 @@ namespace Product_Management.Pages.Clients
                 return Page();
             }
             clientservice.AddClient(ClientVm);
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Clients/Index");
         }
 
        

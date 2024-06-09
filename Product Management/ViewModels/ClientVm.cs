@@ -1,4 +1,5 @@
 ﻿using Product_Management.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Product_Management.ViewModels
 {
@@ -7,9 +8,13 @@ namespace Product_Management.ViewModels
 
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Client Name is required.")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Client Code is required.")]
+
         public int Code { get; set; }
+
 
         public ClientClass Class { get; set; }
 

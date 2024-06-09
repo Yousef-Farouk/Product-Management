@@ -20,10 +20,8 @@ namespace Product_Management.Service
                 .ForMember(dest => dest.ProductDescription, opt => opt.MapFrom(src => src.Product.Description))
                 .ForMember(dest => dest.ProductIsActive, opt => opt.MapFrom(src => src.Product.IsActive));
 
+
             CreateMap<ClientProductVm, ClientProducts>().ReverseMap();
-
-
-
         }
     }
 }

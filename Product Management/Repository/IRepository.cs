@@ -5,10 +5,8 @@ namespace Product_Management.Repository
 {
     public interface IRepository<T> where T : class
     {
-       // public List<T> GetAll();
 
         public IQueryable<T> GetAll();
-
 
         public T GetByID(int id);
 

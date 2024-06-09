@@ -15,7 +15,7 @@
                     <th scope="col">Class</th>
                     <th scope="col">Code</th>
                     <th scope="col">State</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" class="text-center">Action</th>
 
                 </tr>
             </thead>
@@ -29,14 +29,14 @@
                         <td>@client.Code</td>
                         <td>@client.State</td>
                         <td>
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center justify-content-center">
                                 <a class="btn btn-success mb-2 me-2" asp-page="/Clients/EditClient" asp-page-handler="ClientById" asp-route-id="@client.Id">Edit</a>
                                 <form method="post" asp-page-handler="Delete" asp-route-id="@client.Id">
                                     <input type="submit" value="Delete" class="btn btn-danger mb-2 ms-2 me-2" />
                                 </form>
 
                                 <a class="btn btn-primary mb-2 me-2" asp-page="/Clients/ClientDetails" asp-page-handler="ClientDetails" asp-route-id="@client.Id">Details</a>
-                                <a class="btn btn-success mb-2 " asp-page="/ClientProducts/AddClientProduct" asp-page-handler="ClientProduct" asp-route-clientId="@client.Id">Add Product</a>
+                                <a class="btn btn-secondary mb-2 " asp-page="/ClientProducts/AddClientProduct" asp-page-handler="ClientProduct" asp-route-clientId="@client.Id">Add Product</a>
 
                             </div>
                         </td>

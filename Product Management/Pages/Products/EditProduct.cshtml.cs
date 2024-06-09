@@ -22,7 +22,7 @@ namespace Product_Management.Pages.Products
         }
 
         [BindProperty]
-        public ProductVm ProductVm { get; set; } = default!;
+        public ProductVm ProductVm { get; set; }
 
         public IActionResult OnGetProductById(int id)
         {
@@ -45,7 +45,7 @@ namespace Product_Management.Pages.Products
 
             productservice.UpdateProduct(ProductVm);
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Products/Index");
         }
 
 

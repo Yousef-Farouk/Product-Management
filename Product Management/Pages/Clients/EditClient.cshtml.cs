@@ -52,7 +52,7 @@ namespace Product_Management.Pages.Clients
 
             clientservice.UpdateClient(ClientVm);
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Clients/Index");
         }
 
 

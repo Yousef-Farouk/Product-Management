@@ -8,7 +8,7 @@ namespace Product_Management.UnitOfWorks
         ProductManagementContext db;
         ProductRepository productRepository;
         Repository<Client> clientRepository;
-        Repository<ClientProducts> clientproductsRepository;
+        IClientProductRepository clientproductsRepository;
 
 
         public UnitOfWork(ProductManagementContext _db)
@@ -42,13 +42,13 @@ namespace Product_Management.UnitOfWorks
             }
         }
 
-        public Repository<ClientProducts> ClientProductsRepository
+        public IClientProductRepository ClientProductsRepository
         {
             get
             {
                 if (clientproductsRepository == null)
                 {
-                    clientproductsRepository = new Repository<ClientProducts>(db);
+                    clientproductsRepository = new ClientProductRepository(db);
                 }
                 return clientproductsRepository;
             }

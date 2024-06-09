@@ -38,7 +38,7 @@ namespace Product_Management.Pages.Products
             }
 
             productservice.AddProduct(ProductVm);
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Products/Index");
         }
 
        

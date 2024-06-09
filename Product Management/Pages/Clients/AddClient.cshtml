@@ -12,15 +12,14 @@
     <div class="row">
         <div class="col-md-4">
             <form method="post">
-                @* <div asp-validation-summary="All" class="text-danger"></div> *@
                 <div class="form-group mt-2 me-2">
                     <label asp-for="ClientVm.Name" class="control-label"></label>
-                    <input asp-for="ClientVm.Name" data-val="false" data-val-maxlength-max="2" data-val-maxlength="The field Name must not exceed 2 chars" class="form-control" />
+                    <input asp-for="ClientVm.Name" data-val="true" data-val-maxlength-max="50" data-val-maxlength="The Client Name must not exceed 50 chars" class="form-control" />
                     <span asp-validation-for="ClientVm.Name" class="text-danger"></span>
                 </div>
                 <div class="form-group mt-2 me-2">
                     <label asp-for="ClientVm.Code" class="control-label"></label>
-                    <input asp-for="ClientVm.Code" class="form-control" />
+                    <input asp-for="ClientVm.Code" data-val="true" data-val-maxlength-max="9" data-val-maxlength="The Client Code must not exceed 9 numbers" class="form-control" />
                     <span asp-validation-for="ClientVm.Code" class="text-danger"></span>
                 </div>
                 <div class="form-group mt-2 me-2">

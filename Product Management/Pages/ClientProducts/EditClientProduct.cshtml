@@ -1,8 +1,10 @@
 ﻿@page
-@model AddClientProductModel
+@model Product_Management.Pages.ClientProducts.EditClientProductModel
 @{
 }
-<h1 class="mt-4 mb-3">Add Client Product</h1>
+
+
+<h1 class="mt-4 mb-3">Edit Client Product</h1>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -14,9 +16,8 @@
                     <select asp-for="ClientProductVm.ProductId" class="form-control" asp-items="Model.ActiveProducts">
                         <option value="">-- Select Product --</option>
                     </select>
-                    <span asp-validation-for="ClientProductVm.ProductId" class="text-danger"></span>
+                    <span asp-validation-for="ClientProductVm.ProductId" class="text-danger"></span> 
                 </div>
-
                 <div class="form-group mt-2">
                     <label asp-for="ClientProductVm.StartDate" class="control-label">Start Date</label>
                     <input asp-for="ClientProductVm.StartDate" class="form-control" type="date" />
@@ -33,7 +34,7 @@
                     <span asp-validation-for="ClientProductVm.License" class="text-danger"></span>
                 </div>
                 <div class="form-group mt-3">
-                    <input type="submit" value="Add Product" class="btn btn-primary" />
+                    <input type="submit" value="Edit Product" class="btn btn-primary" />
                 </div>
             </form>
         </div>

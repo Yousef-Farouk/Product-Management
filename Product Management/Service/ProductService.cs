@@ -53,7 +53,7 @@ namespace Product_Management.Service
 
             if (product.ClientProducts.Any())
             {
-                return false;           // Cannot delete product because it has related ClientProducts
+                return false;           
             }
 
             unit.ProductRepository.Delete(product);

@@ -13,11 +13,7 @@ namespace Product_Management.Repository
             db = _db;
             
         }
-        //public List<T> GetAll()
-        //{
-        //    return db.Set<T>().ToList();
-        //}
-
+        
         public IQueryable<T> GetAll()
         {
             return db.Set<T>().AsQueryable();

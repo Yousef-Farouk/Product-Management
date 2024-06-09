@@ -25,7 +25,7 @@ namespace Product_Management.Pages.Products
         public async Task OnGetAsync(int? pageNumber)
         {
             int page = pageNumber ?? 1;
-            int pageSize = 2; // Number of products per page
+            int pageSize = 2; 
 
             var result =  await productservice.GetPagedProductsAsync(page, pageSize);
             Products = result.Products;
@@ -39,7 +39,7 @@ namespace Product_Management.Pages.Products
 
             if(!result)
             {
-                // Handle the case when the product cannot be deleted
+               
                 TempData["ErrorMessage"] = "Cannot delete product because it has related client products";
             }
 
