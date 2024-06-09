@@ -1,4 +1,5 @@
-﻿using Product_Management.Models;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Product_Management.Models;
 
 namespace Product_Management.Repository
 {
@@ -6,6 +7,8 @@ namespace Product_Management.Repository
     {
 
         public Product GetRelatedProduct(int id);
+
+        public SelectList GetActiveProducts();
 
     }
 }

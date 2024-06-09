@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Product_Management.Models;
 
 namespace Product_Management.Repository
@@ -12,7 +13,11 @@ namespace Product_Management.Repository
             db=_db;
         
         }
-        
+
+        public SelectList GetActiveProducts()
+        {
+            return new SelectList(db.Products.Where(p => p.IsActive), "Id", "Name");
+        }
 
         public Product GetRelatedProduct(int id)
         {

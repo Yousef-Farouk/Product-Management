@@ -26,6 +26,9 @@ namespace Product_Management
 
             builder.Services.AddScoped<ClientService>();
 
+            builder.Services.AddScoped<ClientProductsService>();
+
+
             //builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
             builder.Services.AddAutoMapper(typeof(MappingProfile));

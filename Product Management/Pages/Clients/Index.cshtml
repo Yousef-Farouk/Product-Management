@@ -35,7 +35,8 @@
                                     <input type="submit" value="Delete" class="btn btn-danger mb-2 ms-2 me-2" />
                                 </form>
 
-                                <a class="btn btn-primary mb-2 " asp-page="/Clients/ClientDetails" asp-page-handler="ClientDetails" asp-route-id="@client.Id">Details</a>
+                                <a class="btn btn-primary mb-2 me-2" asp-page="/Clients/ClientDetails" asp-page-handler="ClientDetails" asp-route-id="@client.Id">Details</a>
+                                <a class="btn btn-success mb-2 " asp-page="/ClientProducts/AddClientProduct" asp-page-handler="ClientProduct" asp-route-clientId="@client.Id">Add Product</a>
 
                             </div>
                         </td>

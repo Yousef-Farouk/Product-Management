@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Product_Management.ViewModels
 {
-    public class ClientProductsVm
+    public class RelatedProductsVm
     {
+
 
         public string ProductName { get; set; }
 

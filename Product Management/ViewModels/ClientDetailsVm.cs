@@ -16,6 +16,6 @@ namespace Product_Management.ViewModels
 
         public ClientState State { get; set; }
 
-        public List<ClientProductsVm> ClientProducts { get; set; }
+        public List<RelatedProductsVm> ClientProducts { get; set; }
     }
 }

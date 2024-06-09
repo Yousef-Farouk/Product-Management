@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Models;
 using Product_Management.UnitOfWorks;
@@ -46,7 +47,7 @@ namespace Product_Management.Service
         }
 
 
-        public bool DeleteProduct(int id) 
+        public bool DeleteProduct(int id)
         {
             var product = unit.ProductRepository.GetRelatedProduct(id);
 
@@ -78,5 +79,10 @@ namespace Product_Management.Service
             return (productVm, totalCount);
         }
 
+        public SelectList GetActiveProducts()
+        {
+            return unit.ProductRepository.GetActiveProducts();
+
+        }
     }
 }

@@ -15,10 +15,15 @@ namespace Product_Management.Service
             CreateMap<Client, ClientDetailsVm>()
             .ForMember(dest => dest.ClientProducts, opt => opt.MapFrom(src => src.ClientProducts.OrderBy(cp => cp.Product.Name)));
 
-            CreateMap<ClientProducts, ClientProductsVm>()
+            CreateMap<ClientProducts, RelatedProductsVm>()
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
                 .ForMember(dest => dest.ProductDescription, opt => opt.MapFrom(src => src.Product.Description))
                 .ForMember(dest => dest.ProductIsActive, opt => opt.MapFrom(src => src.Product.IsActive));
+
+            CreateMap<ClientProductVm, ClientProducts>().ReverseMap();
+
+
+
         }
     }
 }
