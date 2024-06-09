@@ -6,8 +6,10 @@ namespace Product_Management.UnitOfWorks
     public class UnitOfWork 
     {
         ProductManagementContext db;
-        Repository<Product> productRepository;
+        ProductRepository productRepository;
         Repository<Client> clientRepository;
+        Repository<ClientProducts> clientproductsRepository;
+
 
         public UnitOfWork(ProductManagementContext _db)
         {
@@ -15,13 +17,13 @@ namespace Product_Management.UnitOfWorks
 
         }
 
-        public Repository<Product> ProductRepository
+        public IProductRepository ProductRepository
         {
             get
             {
                 if (productRepository == null)
                 {
-                    productRepository = new Repository<Product>(db);
+                    productRepository = new ProductRepository(db);
 
                 }
                 return productRepository;
@@ -39,6 +41,19 @@ namespace Product_Management.UnitOfWorks
                 return clientRepository;
             }
         }
+
+        public Repository<ClientProducts> ClientProductsRepository
+        {
+            get
+            {
+                if (clientproductsRepository == null)
+                {
+                    clientproductsRepository = new Repository<ClientProducts>(db);
+                }
+                return clientproductsRepository;
+            }
+        }
+
         public void SaveChanges()
         {
             db.SaveChanges();

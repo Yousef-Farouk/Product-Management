@@ -9,35 +9,42 @@ using Product_Management.Models;
 using Product_Management.Service;
 using Product_Management.ViewModels;
 
-namespace Product_Management.Pages.Products
+namespace Product_Management.Pages.Clients
 {
-    public class AddProductModel : PageModel
+    public class AddClientModel : PageModel
     {
-        ProductService productservice;
+        ClientService clientservice;
 
 
         [BindProperty]
-        public ProductVm ProductVm { get; set; }
+        public ClientVm ClientVm { get; set; }
 
 
-        public AddProductModel(ProductService _productservice)
+        public List<SelectListItem> ClientClasses { get; set; }
+
+        public List<SelectListItem> ClientStates { get; set; }
+
+        public AddClientModel(ClientService _clientservice)
         {
-            productservice = _productservice;
+           clientservice = _clientservice;
         }
 
         public IActionResult OnGet()
         {
+            ClientClasses = clientservice.GetClientClasses();
+            ClientStates = clientservice.GetClientStates();
+
             return Page();
         }
 
-        public  IActionResult OnPostAsync()
+
+        public  IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            productservice.AddProduct(ProductVm);
+            clientservice.AddClient(ClientVm);
             return RedirectToPage("./Index");
         }
 

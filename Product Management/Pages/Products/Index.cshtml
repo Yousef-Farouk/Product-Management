@@ -38,18 +38,7 @@
             </tbody>
         </table>
 
-        @* <nav aria-label="Page navigation example">
-        <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-        </nav> *@
-
-
-
+      
         <nav aria-label="Page navigation example  ">
             <ul class="pagination justify-content-center align-items-center mt-4 mb-4">
                
@@ -74,5 +63,21 @@
 
     </div>
 </div>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
 
+@* @if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '@TempData["ErrorMessage"]'
+        });
+    </script>
+} *@
 

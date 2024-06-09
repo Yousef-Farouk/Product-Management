@@ -46,11 +46,19 @@ namespace Product_Management.Service
         }
 
 
-        public void DeleteProduct(int id) 
+        public bool DeleteProduct(int id) 
         {
-            var product = unit.ProductRepository.GetByID(id);   
+            var product = unit.ProductRepository.GetRelatedProduct(id);
+
+            if (product.ClientProducts.Any())
+            {
+                return false;           // Cannot delete product because it has related ClientProducts
+            }
+
             unit.ProductRepository.Delete(product);
             unit.SaveChanges();
+
+            return true;
         }
 
         public async Task<(IEnumerable<ProductVm> Products, int TotalCount)> GetPagedProductsAsync(int pageNumber, int pageSize)

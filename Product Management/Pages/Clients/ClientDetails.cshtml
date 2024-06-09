@@ -1,0 +1,45 @@
+﻿@page
+@model Product_Management.Pages.Clients.ClientDetailsModel
+@{
+}
+
+<h1>Client Details</h1>
+
+<div>
+    <h2>@Model.ClientVm.Name</h2>
+    <p>Code: @Model.ClientVm.Code</p>
+    <p>Class: @Model.ClientVm.Class</p>
+    <p>State: @Model.ClientVm.State</p>
+</div>
+
+<h3>Products</h3>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Is Active</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>License</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.ClientVm.ClientProducts)
+        {
+            <tr>
+                <td>@product.ProductName</td>
+                <td>@product.ProductDescription</td>
+                <td>@(product.ProductIsActive ? "Yes" : "No")</td>
+                <td>@product.StartDate.ToShortDateString()</td>
+                <td>@(product.EndDate?.ToShortDateString() ?? "N/A")</td>
+                <td>@product.License</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="/Clients/Index">Back to List</a>
+</div>

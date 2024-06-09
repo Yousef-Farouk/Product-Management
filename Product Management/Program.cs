@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Models;
+using Product_Management.Repository;
 using Product_Management.Service;
 using Product_Management.UnitOfWorks;
 
@@ -23,6 +24,10 @@ namespace Product_Management
 
             builder.Services.AddScoped<ProductService>();
 
+            builder.Services.AddScoped<ClientService>();
+
+            //builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 
             var app = builder.Build();
@@ -31,11 +36,12 @@ namespace Product_Management
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();

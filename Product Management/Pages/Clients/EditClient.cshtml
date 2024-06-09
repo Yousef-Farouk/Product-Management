@@ -1,0 +1,52 @@
+﻿@page
+@model Product_Management.Pages.Clients.EditClientModel
+
+@{
+    ViewData["Title"] = "EditClient";
+}
+
+<h1 class="mt-4 mb-3">Edit Client</h1>
+<div class="contaier">
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                @* <div asp-validation-summary="All" class="text-danger"></div> *@
+                <input type="hidden" asp-for="ClientVm.Id" />
+
+                <div class="form-group mt-2 me-2">
+                    <label asp-for="ClientVm.Name" class="control-label"></label>
+                    <input asp-for="ClientVm.Name" data-val="false" data-val-maxlength-max="2" data-val-maxlength="The field Name must not exceed 2 chars" class="form-control"/>
+                    <span asp-validation-for="ClientVm.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2 me-2">
+                    <label asp-for="ClientVm.Code" class="control-label"></label>
+                    <input asp-for="ClientVm.Code" class="form-control" readonly />
+                    <span asp-validation-for="ClientVm.Code" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2 me-2">
+                    <label asp-for="ClientVm.Class" class="control-label"></label>
+                    <select asp-for="ClientVm.Class" class="form-control" asp-items="Model.ClientClasses"></select>
+                    <span asp-validation-for="ClientVm.Class" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-2 me-2">
+                    <label asp-for="ClientVm.State" class="control-label"></label>
+                    <select asp-for="ClientVm.State" class="form-control" asp-items="Model.ClientStates" ></select>
+                    <span asp-validation-for="ClientVm.State" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3 mb-3">
+                    <input type="submit" value="Edit Client" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

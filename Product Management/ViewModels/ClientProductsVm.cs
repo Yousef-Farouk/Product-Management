@@ -1,0 +1,21 @@
+﻿using Product_Management.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace Product_Management.ViewModels
+{
+    public class ClientProductsVm
+    {
+
+        public string ProductName { get; set; }
+
+        public string ProductDescription { get; set; }
+
+        public bool ProductIsActive { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
+
+        public string License { get; set; }
+    }
+}

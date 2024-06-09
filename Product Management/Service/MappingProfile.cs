@@ -10,8 +10,15 @@ namespace Product_Management.Service
         public MappingProfile() 
         {
             CreateMap<Product, ProductVm>().ReverseMap();
-            CreateMap<IPagedList<Product>, IPagedList<ProductVm>>().ReverseMap();
+            CreateMap<Client,ClientVm>().ReverseMap();
 
+            CreateMap<Client, ClientDetailsVm>()
+            .ForMember(dest => dest.ClientProducts, opt => opt.MapFrom(src => src.ClientProducts.OrderBy(cp => cp.Product.Name)));
+
+            CreateMap<ClientProducts, ClientProductsVm>()
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
+                .ForMember(dest => dest.ProductDescription, opt => opt.MapFrom(src => src.Product.Description))
+                .ForMember(dest => dest.ProductIsActive, opt => opt.MapFrom(src => src.Product.IsActive));
         }
     }
 }

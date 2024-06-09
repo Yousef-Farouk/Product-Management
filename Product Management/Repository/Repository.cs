@@ -6,7 +6,7 @@ namespace Product_Management.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        ProductManagementContext db;
+       public ProductManagementContext db;
 
         public Repository(ProductManagementContext _db) 
         {
@@ -37,7 +37,7 @@ namespace Product_Management.Repository
 
         public void Update(T entity)
         {
-            db.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.Set<T>().Update(entity);
         }
 
         public void Delete(int id)
