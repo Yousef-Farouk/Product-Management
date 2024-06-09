@@ -6,6 +6,8 @@ namespace Product_Management.ViewModels
     {
         public int ClientId { get; set; }
 
+
+        [Required(ErrorMessage = "Choosing Product is required")]
         public int ProductId { get; set; }
 
 
